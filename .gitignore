@@ -172,3 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Files specifically from this project
+modified-prices-split-adjusted.csv

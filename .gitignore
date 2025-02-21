@@ -175,4 +175,4 @@ cython_debug/
 
 # Files specifically from this project
 modified-prices-split-adjusted.csv
-stock_analysis_report
+stock_analysis_report.docx

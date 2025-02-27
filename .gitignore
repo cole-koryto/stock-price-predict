@@ -175,3 +175,4 @@ cython_debug/
 
 # Files specifically from this project
 stock_analysis_report.docx
+*.joblib

@@ -1,3 +1,4 @@
+from datetime import timedelta
 from joblib import dump
 from matplotlib import pyplot as plt
 import pandas as pd
@@ -5,10 +6,8 @@ from sklearn.linear_model import ElasticNet
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
 from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from xgboost import XGBRegressor
-from xgboost import plot_importance
 
 
 def main():
@@ -22,8 +21,7 @@ def main():
 
     # splits data into training and test set
     # x_train, x_test, y_train, y_test = train_test_split(prices_df[["open", "low", "high", "volume", "sma_10", "macd", "rsi"]], prices_df["close"], test_size = 0.10, shuffle=False)
-    x_train, x_test, y_train, y_test = train_test_split(prices_df[["open_L1", "low_L1", "high_L1", "volume_L1", "sma_10_L1", "macd_L1", "rsi_L1"]], prices_df["close"], test_size = 0.10, shuffle=False)
-
+    x_train, x_test, y_train, y_test = train_test_split_last_year(prices_df)
 
     # scales data with standard scaler
     x_train, x_test = scaleData(x_train, x_test)
@@ -41,6 +39,31 @@ def main():
 
     # Creates and runs XGBoost model
     createXGBoostModel(x_train, x_test, y_train, y_test)
+
+
+# splits the dataset into a training set and a test set, where the test set consists of the last year of data
+def train_test_split_last_year(prices_df, date_col="date", feature_cols = ["open_L1", "low_L1", "high_L1", "volume_L1", "sma_10_L1", "macd_L1", "rsi_L1"], target_col = "close"):
+
+    # Ensure the date column is in datetime format
+    prices_df[date_col] = pd.to_datetime(prices_df[date_col])
+
+    # Find the last date in the dataset
+    last_date = prices_df[date_col].max()
+
+    # Determine the cutoff date for the test set (one year before the last date)
+    cutoff_date = last_date - timedelta(days=365)
+
+    # Split into training and testing sets based on the cutoff date
+    train_df = prices_df[prices_df[date_col] < cutoff_date]
+    test_df = prices_df[prices_df[date_col] >= cutoff_date]
+    test_df.to_csv("Test.csv")
+
+    # Extract train and test sets
+    x_train, y_train = train_df[feature_cols], train_df[target_col]
+    x_test, y_test = test_df[feature_cols], test_df[target_col]
+
+    return x_train, x_test, y_train, y_test
+
 
 # scales data with standard scaler
 def scaleData(x_train, x_test):

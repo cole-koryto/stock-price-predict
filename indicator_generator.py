@@ -37,6 +37,13 @@ def calculate_sma(df, period=10):
     return df.rolling(period).mean()
 
 
+def lag_indicators(df, lag=1, indicators=["open", "low", "high", "volume", "sma_10", "macd", "rsi"]):
+    for indicator in indicators:
+        df[f"{indicator}_L{lag}"] = df.groupby("symbol")[indicator].transform(lambda column: column.shift(lag))
+
+    return df
+
+
 def main():
     prices = pd.read_csv("prices-split-adjusted.csv")
 
@@ -49,6 +56,9 @@ def main():
     # Calculates the RSI
     # Tested against https://www.marketvolume.com/quotes/calculatersi.asp
     prices["rsi"] = prices.groupby("symbol")["close"].transform(calculate_rsi)
+
+    # Adds lagged indicators
+    prices = lag_indicators(prices)
 
     # Adds indicators to dataset
     prices.to_csv("modified-prices-split-adjusted.csv", index=False)

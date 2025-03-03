@@ -21,7 +21,9 @@ def main():
     prices_df = prices_df.dropna()
 
     # splits data into training and test set
-    x_train, x_test, y_train, y_test = train_test_split(prices_df[["open", "low", "high", "volume", "sma_10", "macd", "rsi"]], prices_df["close"], test_size = 0.10, shuffle=False)
+    # x_train, x_test, y_train, y_test = train_test_split(prices_df[["open", "low", "high", "volume", "sma_10", "macd", "rsi"]], prices_df["close"], test_size = 0.10, shuffle=False)
+    x_train, x_test, y_train, y_test = train_test_split(prices_df[["open_L1", "low_L1", "high_L1", "volume_L1", "sma_10_L1", "macd_L1", "rsi_L1"]], prices_df["close"], test_size = 0.10, shuffle=False)
+
 
     # scales data with standard scaler
     x_train, x_test = scaleData(x_train, x_test)

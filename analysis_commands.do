@@ -1,4 +1,6 @@
-// *** Run program once data file has been imported ***
+clear
+
+import delimited "M:\Stock Price Project\modified-prices-split-adjusted.csv"
 
 generate Date = date(date, "YMD")
 

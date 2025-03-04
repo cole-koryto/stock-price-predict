@@ -1,3 +1,5 @@
+// *** Run program once data file has been imported ***
+
 generate Date = date(date, "YMD")
 
 format Date %td

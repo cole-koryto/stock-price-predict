@@ -25,11 +25,6 @@ def main():
 
     # scales data with standard scaler
     x_train, x_test = scaleData(x_train, x_test)
-    print(x_train)
-
-    lin_reg = LinearRegression().fit(x_train, y_train)
-    y_train_pred = lin_reg.predict(x_train)
-    outputMetrics(y_train, y_train_pred)
 
     # Creates and runs linear OLS model
     createOLSModel(x_train, x_test, y_train, y_test)
@@ -56,7 +51,6 @@ def train_test_split_last_year(prices_df, date_col="date", feature_cols = ["open
     # Split into training and testing sets based on the cutoff date
     train_df = prices_df[prices_df[date_col] < cutoff_date]
     test_df = prices_df[prices_df[date_col] >= cutoff_date]
-    test_df.to_csv("Test.csv")
 
     # Extract train and test sets
     x_train, y_train = train_df[feature_cols], train_df[target_col]

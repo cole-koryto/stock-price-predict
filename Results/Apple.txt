@@ -1,0 +1,47 @@
+Creating linear regression model (OLS regression)
+Best model coefficients: [-1.62252005e+01  1.90840984e+01  2.45692848e+01 -2.21278855e-03
+  4.50743573e-01 -8.59243222e-04  6.57589471e-02]
+
+Training Set Metrics
+--------------------------------------
+RMSE is 1.3739517315516507
+R2 score is 0.9975765206028905
+--------------------------------------
+
+Test Set Metrics
+--------------------------------------
+RMSE is 1.509832934501398
+R2 score is 0.9606431213536987
+--------------------------------------
+
+Creating linear regression model (elastic net)
+Best model parameters: {'l1_ratio': 1.0}
+Best model coefficients: [ 0.         13.20271249 13.67448491 -0.          0.          0.
+  0.        ]
+
+Training Set Metrics
+--------------------------------------
+RMSE is 1.7380537831900054
+R2 score is 0.9961218660703323
+--------------------------------------
+
+Test Set Metrics
+--------------------------------------
+RMSE is 1.9022664463954368
+R2 score is 0.93752510229523
+--------------------------------------
+
+Creating XGBoost regression model
+Best model parameters: {'gamma': 0, 'max_depth': 32, 'min_child_weight': 10, 'subsample': 1}
+
+Training Set Metrics
+--------------------------------------
+RMSE is 0.07285427379666312
+R2 score is 0.9999931859322454
+--------------------------------------
+
+Test Set Metrics
+--------------------------------------
+RMSE is 2.0178713203705367
+R2 score is 0.9297008952728503
+--------------------------------------

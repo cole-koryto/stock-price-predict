@@ -4,44 +4,44 @@ Best model coefficients: [-1.67542398  1.55734754  2.35360899 -0.0109248   0.076
 
 Training Set Metrics
 --------------------------------------
-MSE is 0.06416285493698495
+RMSE is 0.2533038786457581
 R2 score is 0.9881903500811933
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-MSE is 0.053032554044186636
+RMSE is 0.23028798067677486
 R2 score is 0.8816574947498513
 --------------------------------------
 
 Creating linear regression model (elastic net)
-Best model parameters: {'l1_ratio': 0.1}
-Best model coefficients: [ 0.44876571  0.45636571  0.45562848 -0.0037173   0.43402979  0.0442792
-  0.02230162]
+Best model parameters: {'l1_ratio': 0.01}
+Best model coefficients: [ 0.45350981  0.45843816  0.46024161 -0.04816239  0.44610366  0.07425376
+  0.0548045 ]
 
 Training Set Metrics
 --------------------------------------
-MSE is 0.3433065845763056
-R2 score is 0.9368118737445649
+RMSE is 0.5486332418619392
+R2 score is 0.94459900302072
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-MSE is 0.15970623554541874
-R2 score is 0.6436144485372568
+RMSE is 0.38442727623035455
+R2 score is 0.670218260309454
 --------------------------------------
 
 Creating XGBoost regression model
-Best model parameters: {}
+Best model parameters: {'gamma': 1, 'max_depth': 6, 'min_child_weight': 0, 'subsample': 1}
 
 Training Set Metrics
 --------------------------------------
-MSE is 0.0021689874293306173
-R2 score is 0.9996007817569239
+RMSE is 0.24855646390864292
+R2 score is 0.9886288741109406
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-MSE is 0.0750587615651621
-R2 score is 0.8325058627726312
+RMSE is 0.24742196378693704
+R2 score is 0.8633924461494837
 --------------------------------------

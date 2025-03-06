@@ -14,7 +14,7 @@ def main():
     prices_df = pd.read_csv("modified-prices-split-adjusted.csv")
 
     # Drops rows without target stock
-    prices_df.drop(prices_df[prices_df["symbol"] != "F"].index, inplace=True)
+    prices_df.drop(prices_df[prices_df["symbol"] != "AAPL"].index, inplace=True)
 
     # cleans dataset and removes unwanted features
     prices_df = prices_df.dropna()
@@ -110,7 +110,7 @@ def createElasticModel(x_train, x_test, y_train, y_test):
 
     # creates a linear regression
     print("\nCreating linear regression model (elastic net)")
-    parameters = [{'l1_ratio': [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}]
+    parameters = [{'l1_ratio': [0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]}]
     K = 5
     linearElasticRegElastic = GridSearchCV(ElasticNet(random_state=17, max_iter=10000), parameters, cv=K, verbose=0, n_jobs=-1)
     linearElasticRegElastic.fit(x_train, y_train)
@@ -140,7 +140,7 @@ def createElasticModel(x_train, x_test, y_train, y_test):
 def createXGBoostModel(x_train, x_test, y_train, y_test):
     # creates a SVM polynomial model
     print("\nCreating XGBoost regression model")
-    parameters = [{}]
+    parameters = [{"max_depth": [6, 12, 18, 32, 38, 42], "gamma": [0, 0.1, 1, 10, 100, 1000], "min_child_weight": [0, 1, 10, 100, 1000], "subsample": [0.1, 0.5, 1]}]
     K = 5
     xgb_reg = GridSearchCV(XGBRegressor(), parameters, cv=K, verbose=0, n_jobs=-1)
     xgb_reg.fit(x_train, y_train)
@@ -182,10 +182,10 @@ def createXGBoostModel(x_train, x_test, y_train, y_test):
 
 # outputs metrics for given predictions and actual data set
 def outputMetrics(y_actual, y_pred):
-    mse = metrics.mean_squared_error(y_actual, y_pred)
+    mse = metrics.root_mean_squared_error(y_actual, y_pred)
     r2 = metrics.r2_score(y_actual, y_pred)
     print("--------------------------------------")
-    print('MSE is {}'.format(mse))
+    print('RMSE is {}'.format(mse))
     print('R2 score is {}'.format(r2))
     print("--------------------------------------")
 

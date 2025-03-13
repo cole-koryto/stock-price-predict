@@ -1,47 +1,49 @@
 Creating linear regression model (OLS regression)
-Best model coefficients: [-1.67542398  1.55734754  2.35360899 -0.0109248   0.0768983  -0.00676491
-  0.02874386]
+Best model coefficients: [-1.62252005e+01  1.90840984e+01  2.45692848e+01 -2.21278855e-03
+  4.50743573e-01 -8.59243222e-04  6.57589471e-02]
 
 Training Set Metrics
 --------------------------------------
-RMSE is 0.2533038786457581
-R2 score is 0.9881903500811933
+RMSE is 1.3739517315516507
+R2 score is 0.9975765206028905
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-RMSE is 0.23028798067677486
-R2 score is 0.8816574947498513
+RMSE is 1.509832934501398
+R2 score is 0.9606431213536987
 --------------------------------------
 
 Creating linear regression model (elastic net)
-Best model parameters: {'l1_ratio': 0.01}
-Best model coefficients: [ 0.45350981  0.45843816  0.46024161 -0.04816239  0.44610366  0.07425376
-  0.0548045 ]
+Best model parameters: {'l1_ratio': 1.0}
+Best model coefficients: [ 0.         13.20271249 13.67448491 -0.          0.          0.
+  0.        ]
 
 Training Set Metrics
 --------------------------------------
-RMSE is 0.5486332418619392
-R2 score is 0.94459900302072
+RMSE is 1.7380537831900054
+R2 score is 0.9961218660703323
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-RMSE is 0.38442727623035455
-R2 score is 0.670218260309454
+RMSE is 1.9022664463954368
+R2 score is 0.93752510229523
 --------------------------------------
 
 Creating XGBoost regression model
-Best model parameters: {'gamma': 1, 'max_depth': 6, 'min_child_weight': 0, 'subsample': 1}
+Best model parameters: {'gamma': 0, 'max_depth': 32, 'min_child_weight': 10, 'subsample': 1}
 
 Training Set Metrics
 --------------------------------------
-RMSE is 0.24855646390864292
-R2 score is 0.9886288741109406
+RMSE is 0.07285427379666312
+R2 score is 0.9999931859322454
 --------------------------------------
 
 Test Set Metrics
 --------------------------------------
-RMSE is 0.24742196378693704
-R2 score is 0.8633924461494837
+RMSE is 2.0178713203705367
+R2 score is 0.9297008952728503
 --------------------------------------
+
+Process finished with exit code 0
